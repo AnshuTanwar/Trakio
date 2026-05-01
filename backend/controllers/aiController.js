@@ -2,10 +2,14 @@ const Groq = require('groq-sdk');
 const Task = require('../models/Task');
 const Project = require('../models/Project');
 
-// Initialize Groq
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+// Initialize Groq conditionally
+let groq = null;
+if (process.env.GROQ_API_KEY) {
+    groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+}
 
 const generateDashboardSummary = async (req, res) => {
+  if (!groq) return res.status(503).json({ message: 'AI service is not configured' });
   try {
     const { stats } = req.body;
     if (!stats) return res.status(400).json({ message: 'Stats data is required' });
@@ -35,6 +39,7 @@ const generateDashboardSummary = async (req, res) => {
 };
 
 const generateTasksFromProject = async (req, res) => {
+  if (!groq) return res.status(503).json({ message: 'AI service is not configured' });
   try {
     const { title, description, projectId } = req.body;
     
@@ -83,6 +88,7 @@ const generateTasksFromProject = async (req, res) => {
 };
 
 const enhanceTaskDescription = async (req, res) => {
+  if (!groq) return res.status(503).json({ message: 'AI service is not configured' });
   try {
     const { text } = req.body;
     if (!text || text.trim() === '') {
