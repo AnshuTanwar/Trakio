@@ -1,4 +1,4 @@
-# Trakio (formerly Ethara)
+# Trakio
 
 Trakio is a beautiful, intuitive, and AI-powered project management SaaS designed to help teams collaborate, track tasks, and boost productivity with a premium user experience.
 
