@@ -24,7 +24,7 @@ Trakio is a beautiful, intuitive, and AI-powered project management SaaS designe
 
 1. **Clone the repository**
    ```bash
-   git clone [<repository-url>](https://github.com/AnshuTanwar/Trakio)
+   git clone (https://github.com/AnshuTanwar/Trakio)
    cd Trakio
    ```
 
